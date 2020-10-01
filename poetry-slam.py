@@ -16,8 +16,15 @@ def get_file_lines(filename):
 #     -It should print the lines of the poem in reverse. Include the original line number at the beginning of each line.
 
 
-# def lines_printed_backwards()(lines_list):
-#     print()
+def lines_printed_backwards(lines_list):
+    for i in range(len(lines_list)):
+        lines_list[i] = str(i) + '. ' + lines_list[i]
+    lines_list.reverse()
+    backwards_poem = '\n'.join(lines_list)
+    print(backwards_poem)
+
+lines_list = get_file_lines('poem.txt')
+lines_printed_backwards(lines_list)
 
 # 4. Create a function called lines_printed_random():
 
