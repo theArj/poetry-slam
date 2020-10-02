@@ -1,4 +1,5 @@
-import random
+# import random
+from random import choice
 
 # 1. You will store your poem in a .txt file. Feel free to use any poem of your choice!
 
@@ -7,10 +8,13 @@ import random
 #     -It should have 1 parameter called filename, which is a string of the filename.
 #     -It should return a list of strings containing the lines of the file.
 
+
 def get_file_lines(filename):
-    with open('poem.txt', 'r') as infile:
-        poem_string = infile.read()
-        return poem_string.split('\n')
+    # input_file_name = filename
+    infile = open(filename, 'r')
+    lines_list = infile.readlines()
+    infile.close()
+    return lines_list
 
 # 3. Create a function called lines_printed_backwards():
 
@@ -19,14 +23,15 @@ def get_file_lines(filename):
 
 
 def lines_printed_backwards(lines_list):
-    backwards_lines_list = []
-    for i in range(len(lines_list)):
-        backwards_lines_list.append(str(i) + '. ' + lines_list[i])
-    backwards_lines_list.reverse()
-    backwards_poem = '\n'.join(backwards_lines_list)
-    print(backwards_poem)
+    lines_list.reverse()
+    lines_length = len(lines_list)
+    for i in range(lines_length):
+        line = lines_list[i]
+        line_number = lines_length - i
+        print(f"{line_number} {line}")
 
-lines_list = get_file_lines('poem.txt')
+
+lines_list = get_file_lines("poem.txt")
 lines_printed_backwards(lines_list)
 
 # 4. Create a function called lines_printed_random():
@@ -38,14 +43,13 @@ lines_printed_backwards(lines_list)
 
 
 def lines_printed_random(lines_list):
-    random_lines_list = []
+    # lines_length = len(lines_list)
     for i in range(len(lines_list)):
-        rand_i = random.randint(0, len(lines_list) - 1)
-        random_lines_list.append(lines_list[rand_i])
-    random_poem = '\n'.join(random_lines_list)
-    print(random_poem)
+        print(choice(lines_list))
 
-lines_printed_random(lines_list)
+
+random_poem = get_file_lines('poem.txt')
+lines_printed_random(random_poem)
 
 # 5. Create a function called lines_printed_custom():
 
@@ -54,9 +58,17 @@ lines_printed_random(lines_list)
 #     -Make sure that you carefully comment your custom function so it’s clear what it does.
 
 
-# def lines_printed_custom(lines_list):
-#     print()
+def lines_printed_custom(lines_list):
+    for line in lines_list:
+        words = line.split(" ")
+        print(words[0])
+
+
+lines_printed_custom(lines_list)
 
 # 6. Your final submitted code should use the four functions(get_file_lines(), lines_printed_backwards(), lines_printed_random(),
 #    and lines_printed_custom()) you wrote. It should print out the poem contained in your text file backwards, random, and
 #    custom to the terminal.
+
+
+# Collaborative with Sawyer, Liz, Lon and Joi.
