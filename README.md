@@ -1,0 +1,1 @@
+<!-- This is the Poetry Slam assignment containing 4 functions, as noted in the poetry-slam.py file. -->
